@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hybrid Calendar</title>
+        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/wordpress-premium/font-awesome-pro/css/all.min.css"
+        />
+
+        <link
+            rel="icon"
+            href="D:\Icons\Calendar\calendar-512x512.png"
+            sizes="512x512"
+            type="image/png"
+        />
+        <link
+            rel="icon"
+            href="D:\Icons\Calendar\calendar-256x256.png"
+            sizes="256x256"
+            type="image/png"
+        />
+        <link
+            rel="icon"
+            href="D:\Icons\Calendar\calendar-chrome.png"
+            sizes="192x192"
+            type="image/png"
+        />
+        <link
+            rel="icon"
+            href="D:\Icons\Calendar\calendar-128x128.png"
+            sizes="128x128"
+            type="image/png"
+        />
+        <link
+            rel="icon"
+            href="D:\Icons\Calendar\calendar-64x64.png"
+            sizes="64x64"
+            type="image/png"
+        />
+        <link
+            rel="icon"
+            href="D:\Icons\Calendar\calendar-32x32.png"
+            sizes="32x32"
+            type="image/png"
+        />
+        <link
+            rel="icon"
+            href="D:\Icons\Calendar\calendar-24x24.png"
+            sizes="24x24"
+            type="image/png"
+        />
+        <link
+            rel="icon"
+            href="D:\Icons\Calendar\calendar-16x16.png"
+            sizes="16x16"
+            type="image/png"
+        />
+
+        <link
+            rel="apple-touch-icon"
+            href="D:\Icons\Calendar\calendar-touch-180x180.png"
+            sizes="180x180"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="D:\Icons\Calendar\calendar-touch-152x152.png"
+            sizes="152x152"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="D:\Icons\Calendar\calendar-touch-144x144.png"
+            sizes="144x144"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="D:\Icons\Calendar\calendar-touch-120x120.png"
+            sizes="120x120"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="D:\Icons\Calendar\calendar-touch-114x114.png"
+            sizes="114x114"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="D:\Icons\Calendar\calendar-touch-76x76.png"
+            sizes="76x76"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="D:\Icons\Calendar\calendar-touch-72x72.png"
+            sizes="72x72"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="D:\Icons\Calendar\calendar-touch-60x60.png"
+            sizes="60x60"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="D:\Icons\Calendar\calendar-touch-57x57.png"
+            sizes="57x57"
+        />
+    </head>
+    <body>
+        <div class="toggle">
+            <label for="switch-mode">Dark Mode</label>
+            <input type="checkbox" id="switch-mode" />
+        </div>
+        <div class="container">
+            <div class="calendar">
+                <div class="header">
+                    <span id="year"></span>
+                    <span id="month"></span>
+                </div>
+                <div class="body">
+                    <div class="weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div class="dates"></div>
+                </div>
+            </div>
+            <div class="info-panel">
+                <div class="clock-date-container">
+                    <div id="analog-clock">
+                        <div id="hour-hand">
+                            <div id="hr"></div>
+                        </div>
+                        <div id="minute-hand">
+                            <div id="min"></div>
+                        </div>
+                        <div id="second-hand">
+                            <div id="sec"></div>
+                        </div>
+                        <!--The numbers-->
+                        <div class="number" style="--i: 1">1</div>
+                        <div class="number" style="--i: 2">2</div>
+                        <div class="number" style="--i: 3">3</div>
+                        <div class="number" style="--i: 4">4</div>
+                        <div class="number" style="--i: 5">5</div>
+                        <div class="number" style="--i: 6">6</div>
+                        <div class="number" style="--i: 7">7</div>
+                        <div class="number" style="--i: 8">8</div>
+                        <div class="number" style="--i: 9">9</div>
+                        <div class="number" style="--i: 10">10</div>
+                        <div class="number" style="--i: 11">11</div>
+                        <div class="number" style="--i: 12">12</div>
+                    </div>
+                    <div class="datetime-info">
+                        <div id="location"></div>
+                        <div id="current-time">
+                            <span id="time">
+                                <span class="digit" id="digit1">0</span
+                                ><span class="digit" id="digit2">0</span>:<span
+                                    class="digit"
+                                    id="digit3"
+                                    >0</span
+                                ><span class="digit" id="digit4">0</span>:<span
+                                    class="digit"
+                                    id="digit5"
+                                    >0</span
+                                ><span class="digit" id="digit6">0</span>.<span id="hundredths"
+                                    >00</span
+                                >
+                            </span>
+                            <span id="tz-name"></span>
+                            <span id="status"></span>
+                        </div>
+                        <div id="current-date"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="prevmonth" type="button">&larr;</button>
+        <button id="nextmonth" type="button">&rarr;</button>
+        <script src="script.js"></script>
+    </body>
+</html>
