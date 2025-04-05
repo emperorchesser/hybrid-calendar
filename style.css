@@ -78,13 +78,13 @@ body.dark-mode {
     overflow: hidden;
 }
 .digit {
-	transition: transform 100ms ease-in-out; /* Only animate transform */
+	transition: transform 75ms ease-in-out; /* Only animate transform */
 	display: inline-block;
 	transform: scale(1); /* Initial scale */
 }
 
 .digit.pop {
-	transform: scale(1.1); /* Grow slightly */
+	transform: scale(2); /* Grow slightly */
 }
 .toggle {
     position: absolute;
@@ -393,12 +393,12 @@ button {
     transition: 250ms ease-in-out;
     cursor: default;
 }
-.datetime-info *:hover {
+/* .datetime-info *:hover {
     transform: scale(1.05);
 }
 .datetime-info *:not(:hover) {
     transform: scale(1);
-}
+} */
 #location {
     font-family: var(--primary-font);
     font-size: 21px;

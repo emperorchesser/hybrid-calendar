@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const darkModeSwitch = document.getElementById('switch-mode');
     const body = document.body;
     const affectedElements = document.querySelectorAll('#analog-clock, input');
-    const refreshInterval = 10;
+    const refreshInterval = 15;
 
     const enableDarkMode = () => {
         body.classList.add('dark-mode');
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         while (dates.children.length > 35) {
             dates.removeChild(dates.lastChild);
         }
-        if (firstDay == 0 && dates.children.length == 28) {
+        if (firstDay === 0 && dates.children.length === 28) {
             dates.appendChild(document.createElement('div'));
         }
     };
@@ -144,33 +144,30 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${year}-${month}-${day}T${hour}:${minute}:${second}.${millisecond}${offsetSign}${offsetHours}${offsetMinutesPart}`;
     };
 
-    const updateDigit = (digitId, newValue) => {
+    function updateDigit(digitId, newValue) {
         const digitElement = document.getElementById(digitId);
-        const oldValue = digitElement.textContent;
+        if (!digitElement) return;
 
-        if (oldValue !== newValue) {
-            // 1. Grow slightly
+        if (digitElement.textContent !== newValue) {
+            digitElement.textContent = newValue;
+
+            // Remove .pop if present
+            digitElement.classList.remove('pop');
+
+
+            // Re-add .pop to trigger the transition
             digitElement.classList.add('pop');
 
-            // Use requestAnimationFrame to ensure the 'pop' class is rendered
-            requestAnimationFrame(() => {
-                // 2. Change content.
-                digitElement.textContent = newValue;
-
-                // Use setTimeout to trigger the shrink after a short delay
-                setTimeout(() => {
-                    digitElement.classList.remove('pop');
-                    digitElement.style.transform = ''; // Reset scale
-                }, 100); // Adjust delay as needed
-            });
-        } else {
-            digitElement.textContent = newValue; // Update text content even if no animation
+            // OPTIONAL: Remove .pop after the transition so it can be re-triggered later
+            setTimeout(() => {
+                digitElement.classList.remove('pop');
+            }, 85); // match or slightly exceed transition duration
         }
-    };
+    }
 
     const updateClock = () => {
-        const deg = 0b110;
-        const hrDeg = 0x1e;
+        const deg = 6;
+        const hrDeg = 30;
 
         let currentTime = new Date(toISO8601Format(new Date(), tzString).slice(0, 23));
         let milliseconds = currentTime.getMilliseconds() * deg;
@@ -248,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
         [0, 1, 2, 3, 4, 5].forEach((value) => {
             updateDigit(`digit${value + 1}`, timeString[value]);
         });
-        document.getElementById('hundredths').innerHTML = timeString.slice(4, 6);
+        document.getElementById('hundredths').innerHTML = timeString.slice(6);
         tzName.innerHTML = getCurrentTimeZoneName(tzString, standardName, daylightName);
         // tzName.innerHTML = standardName;
         dateElement.innerHTML = currentTime.toLocaleString('en-US', {
