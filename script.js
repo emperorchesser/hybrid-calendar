@@ -149,19 +149,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const oldValue = digitElement.textContent;
 
         if (oldValue !== newValue) {
-            // Only animate if the value changed
             // 1. Grow slightly
             digitElement.classList.add('pop');
 
-            setTimeout(() => {
+            // Use requestAnimationFrame to ensure the 'pop' class is rendered
+            requestAnimationFrame(() => {
                 // 2. Change content.
                 digitElement.textContent = newValue;
 
-                digitElement.classList.remove('pop');
-
-                // 3. Shrink back to normal scale (remove inline style)
-                digitElement.style.transform = '';
-            }, 100);
+                // Use setTimeout to trigger the shrink after a short delay
+                setTimeout(() => {
+                    digitElement.classList.remove('pop');
+                    digitElement.style.transform = ''; // Reset scale
+                }, 100); // Adjust delay as needed
+            });
         } else {
             digitElement.textContent = newValue; // Update text content even if no animation
         }
@@ -248,11 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateDigit(`digit${value + 1}`, timeString[value]);
         });
         document.getElementById('hundredths').innerHTML = timeString.slice(4, 6);
-        tzName.innerHTML = getCurrentTimeZoneName(
-            tzString,
-            standardName,
-            daylightName,
-        );
+        tzName.innerHTML = getCurrentTimeZoneName(tzString, standardName, daylightName);
         // tzName.innerHTML = standardName;
         dateElement.innerHTML = currentTime.toLocaleString('en-US', {
             dateStyle: 'full',
