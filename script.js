@@ -54,12 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const cityName = 'Stuttgart, Baden-W\u00fcrttemberg, Germany';
-    const tzString = 'Europe/Berlin';
-    const standardName = 'CET';
-    const daylightName = 'CEST';
-    const standardtz = "'UTC+01:00'";
-    const daylighttz = "'UTC+02:00'";
+    const cityName = 'Hanoi, Vietnam';
+    const tzString = 'Asia/Bangkok';
+    const standardName = 'ICT';
+    const daylightName = 'IST';
+    const standardtz = "'UTC+07:00'";
+    const daylighttz = "'UTC+07:00'";
     let currentDate = new Date(new Date().toLocaleString('en-US', { timeZone: tzString }));
     let modifiedDate = new Date(currentDate.getFullYear(), currentDate.getMonth());
 
