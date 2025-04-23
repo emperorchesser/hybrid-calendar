@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const tzString = 'Asia/Bangkok';
     const standardName = 'ICT';
     const daylightName = 'IST';
-    const standardtz = "'UTC+07:00'";
-    const daylighttz = "'UTC+07:00'";
+    const standardtz = 'UTC+07:00';
+    const daylighttz = 'UTC+07:00';
     let currentDate = new Date(new Date().toLocaleString('en-US', { timeZone: tzString }));
     let modifiedDate = new Date(currentDate.getFullYear(), currentDate.getMonth());
 
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         document.documentElement.style.setProperty(
             '--offset',
-            tzName.innerHTML === standardName ? standardtz : daylighttz,
+            tzName.innerHTML === standardName ? `\'${standardtz}\'` : `\'${daylighttz}\'`,
         );
 
         if (tzName.innerHTML === standardName) {
